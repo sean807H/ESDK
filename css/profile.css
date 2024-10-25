@@ -1,0 +1,118 @@
+.noto-sans-kr-uniquifier {
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+}
+
+.nuosu-sil-regular {
+    font-family: "Nuosu SIL", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.header-container {
+    background: linear-gradient(to bottom, #3f68fa, #ebefff);
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+/* 메인 이미지 스타일 */
+.main-image {
+    width: auto;
+    padding-left: 250px;
+    max-width: 600px;
+    height: 100%;
+}
+
+.profile-title {
+    height: 0;
+    position: relative;
+    bottom: 350px;
+    right: 500px;
+}
+
+.profile-title h1 {
+    font-size: 2rem;
+    text-align: right;
+    color: rgb(255, 255, 255);
+    font-family: "Noto Sans KR", serif;
+
+}
+
+/* 프로필 섹션 스타일 */
+.profile {
+    padding: 50px 0;
+    background-color: #FFFFFF;
+
+}
+
+h2 {
+    position: relative;
+    left: -100px;
+    font-size: 40px;
+    margin: 0;
+    color: #000000;
+    font-family: "Nuosu SIL", serif;
+}
+
+.profile-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px 0;
+    font-family: "Noto Sans KR", serif;
+}
+
+.profile-image {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: -1;
+}
+
+.profile-change {
+    margin-left: 30px;
+}
+
+.profile-details {
+    text-align: left;
+    margin-top: 30px;
+    padding-left: 20px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.profile-details p {
+    margin: 8px 0;
+
+}
+
+.profile-details a {
+    color: #000000;
+
+}
+
+.profile-details i:hover {
+    color: #3f68fa;
+}
+
+strong {
+    margin-right: 10px;
+}
+
+.gray {
+    margin-right: 10px;
+    color: #878787;
+}
+
+.bold {
+    border-bottom: 1px solid #000000;
+    padding: 10px 0;
+}
