@@ -1,0 +1,69 @@
+@font-face {
+    font-family: 'Plaster-Regular';
+    src: url('/fonts/Plaster-Regular.ttf') format('truetype');
+    
+}
+@font-face{
+    font-family: 'Dongle-Regular';
+    src: url('/fonts/Dongle-Regular.ttf') format('truetype');
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Plaster-Regular', sans-serif;
+}
+
+/* 로고 스타일링 */
+header {
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    font-size: 50px;
+    letter-spacing: 1px;
+    z-index: 1;
+}
+
+.es-text {
+    color: #ffc9c8;
+    /* 로즈쿼츠 색상 */
+
+}
+
+.dk-text {
+    color: #c5eeff;
+    /* 세레니티 색상 */
+}
+
+
+/* 배너 메뉴 스타일링 */
+nav {
+    position: absolute;
+    top: 60px;
+    right: 120px;
+}
+
+nav a {
+    color: #000000;
+    text-decoration: none;
+    font-family: 'Dongle-Regular', sans-serif;
+    margin-left: 30px;
+    font-size: 30px;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+i:hover{
+    color: #ffffff;
+}
+
+.globe-icon {
+    position: absolute;
+    top: 65px;    /* 페이지 상단에서의 거리 */
+    right: 50px;  /* 페이지 오른쪽에서의 거리 */
+    font-size: 25px;  /* 아이콘 크기 조절 */
+    color: #000;  /* 아이콘 색상 (원하는 대로 변경) */
+}
+
+

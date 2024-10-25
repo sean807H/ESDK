@@ -1,3 +1,9 @@
-*{
-    background-color: aquamarine;
+div img {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    height: 160vh;
+    position: relative;
+    color: #fff;
+    vertical-align: bottom;
 }

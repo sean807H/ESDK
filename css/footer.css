@@ -1,0 +1,38 @@
+/* footer.css */
+.footer-banner {
+    position: relative;  /* 페이지 내용에 따라 위치 */
+    bottom: 0;           /* 페이지 하단에 위치 */
+    left: 0;
+    width: 100%;         /* 화면 너비 전체를 차지 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    background: linear-gradient(to right, #ffc9c8, #c5eeff);
+    color: #333;
+    font-family: 'Plaster-Regular', sans-serif;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+/* 푸터 로고 스타일링 */
+.footer-logo .es-text {
+    color: #ffc9c8;
+    font-size: 45px;
+    letter-spacing: 1px;
+}
+
+.footer-logo .dk-text {
+    color: #c5eeff;
+    font-size: 45px;
+    letter-spacing: 1px;
+}
+
+.footer-content p {
+    margin: 10px 0 0;
+    font-size: 20px;
+    font-family: 'Dongle-Regular', sans-serif;
+    color: #878787; /* 푸터 텍스트 색상 */
+}
