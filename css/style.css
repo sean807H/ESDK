@@ -60,7 +60,7 @@ i:hover{
 
 .globe-icon {
     position: absolute;
-    top: 65px;    /* 페이지 상단에서의 거리 */
+    top: 60px;    /* 페이지 상단에서의 거리 */
     right: 50px;  /* 페이지 오른쪽에서의 거리 */
     font-size: 25px;  /* 아이콘 크기 조절 */
     color: #000;  /* 아이콘 색상 (원하는 대로 변경) */
