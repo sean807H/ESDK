@@ -1,0 +1,163 @@
+.noto-sans-kr-uniquifier {
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+}
+
+.nuosu-sil-regular {
+    font-family: "Nuosu SIL", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.header-container {
+    background: linear-gradient(to bottom, #fca8a8, #fcf4f4);
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+/* 메인 이미지 스타일 */
+.main-image {
+    width: auto;
+    padding-left: 250px;
+    max-width: 600px;
+    height: 100%;
+}
+
+.profile-title {
+    height: 0;
+    position: relative;
+    bottom: 350px;
+    right: 500px;
+}
+
+.profile-title h1 {
+    font-size: 2rem;
+    text-align: right;
+    color: rgb(255, 255, 255);
+    font-family: "Noto Sans KR", serif;
+
+}
+
+.main-link{
+    text-decoration: none;    
+}
+
+.album {
+    padding: 50px 0;
+    background-color: #FFFFFF;
+    margin-top: 100px;
+}
+
+h2 {
+    position: relative;
+    left: -100px;
+    font-size: 40px;
+    margin: 0;
+    color: #000000;
+    font-family: "Nuosu SIL", serif;
+}
+
+.profile-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px 0;
+    font-family: "Noto Sans KR", serif;
+}
+
+.profile-image {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* 앨범 배치 */
+.album-section {
+    margin-bottom: 100px;
+    background-color: #FFFFFF;
+}
+
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-items: center;
+    /* margin-top: 20px; */
+}
+
+.album-item {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.album-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.album-item:hover img {
+    transform: scale(1.1);
+}
+
+.album-info {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    bottom: 0;
+    background: linear-gradient(to bottom, #f79999, #9eb1ff);
+    color: #fff;
+    font-size: 14px;
+    opacity: 0; /* 초기 상태: 숨김 */
+    transition: opacity 0.3s ease;
+    padding: 10px; /* 텍스트 위치 조정 */
+    text-align: left; /* 텍스트를 왼쪽으로 정렬 */
+    display: flex;
+    align-items: flex-end; /* 텍스트를 아래쪽으로 정렬 */
+}
+
+/* .info-container를 flexbox로 설정 */
+.info-container {
+    display: flex;
+    flex-direction: column; /* 수직으로 정렬 */
+}
+
+.single {
+    color: #000000; /* '싱글'의 색상 설정 */
+    margin-bottom: 5px; /* '싱글' 아래쪽 여백 */
+    opacity: 1;
+}
+
+.title {
+    color: #000000; /* '한 편의 너'의 색상 설정 */
+    margin-bottom: 5px; /* '한 편의 너' 아래쪽 여백 */
+    font-weight: bold;
+    opacity: 1;
+}
+
+.date {
+    color: #ffffff; /* '2017.08.09'의 색상 설정 */
+    opacity: 1;
+}
+
+/* .album-item에 마우스를 올렸을 때 .album-info가 보이도록 설정 */
+.album-item:hover .album-info {
+    opacity: 0.8; /* 마우스 오버 시 불투명도 설정 */
+}
+
+
+
+
