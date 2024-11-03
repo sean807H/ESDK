@@ -1,0 +1,165 @@
+.noto-sans-kr-uniquifier {
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+}
+
+.nuosu-sil-regular {
+    font-family: "Nuosu SIL", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.header-container {
+    position: relative;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+/* 메인 이미지 스타일 */
+.main-image {
+    width: 100vw; /* 가로를 화면 너비에 꽉 채우기 */
+    max-width: none; /* max-width 제한 해제 */
+    height: 600px; /* 높이를 600px로 고정 */
+    object-fit: cover; /* 비율을 유지하며 이미지가 컨테이너에 맞게 조정 */
+}
+
+.cover-background {
+    position: absolute;
+    bottom: 0; /* 이미지의 맨 아래에 고정 */
+    left: 50%;
+    transform: translateX(-50%); /* 수평 중앙 정렬 */
+    width: 1040px; /* 고정된 너비 */
+    height: 70px; /* 고정된 높이 */
+    background-color: #ffffff; /* 흰색 배경 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.cover-background h2 {
+    font-size: 32px;
+    font-family: "Nuosu SIL", serif;
+    color: #333; /* 텍스트 색상 */
+    margin: 0;
+}
+
+.main-link {
+    text-decoration: none;
+}
+
+.video-section {
+    width: 80%;
+    max-width: 1000px;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.main-video-container {
+    position: relative;
+    width: 100%;
+    max-width: 1280px; /* 원하는 최대 너비 */
+    margin-bottom: 30px;
+    padding-top: 56.25%; /* 16:9 비율을 유지하기 위한 패딩 */
+}
+
+#main-video-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.main-video-title {
+    font-size: 18px;
+    color: #333;
+    font-family: "Noto Sans KR", serif;
+    text-align: center;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* 썸네일 갤러리 스타일 */
+.thumbnail-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    justify-items: center;
+    margin-top: 30px; /* 큰 화면과 썸네일 갤러리 사이 여백 추가 */
+}
+
+.thumbnail {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 16 / 9;
+    cursor: pointer;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 컨테이너의 가로, 세로 중앙에 위치 */
+    color: rgba(255, 255, 255, 0.7); /* 흐린 하얀색 텍스트 */
+    font-size: 16px;
+    font-family: "Noto Sans KR", serif;
+    padding: 5px 10px;
+    text-align: center;
+    width: 80%;
+    transition: color 0.3s ease; /* hover 시 색상 변화에 부드러운 전환 효과 추가 */
+}
+
+.thumbnail:hover p {
+    color: rgba(255, 255, 255, 1); /* hover 시 선명한 흰색 텍스트 */
+}
+
+
+
+/* 페이지 네이션 스타일 */
+.pagination {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination span {
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px 10px;
+    color: #969595; /* 기본 회색 텍스트 색상 */
+    border-radius: 5px;
+    font-family: "Noto Sans KR", serif;
+    border: none; /* 테두리 제거 */
+    transition: color 0.3s ease; /* 색상 전환 효과 추가 */
+}
+
+.pagination span:hover {
+    color: #333; /* hover 시 검정색 텍스트 */
+}
