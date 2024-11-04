@@ -1,0 +1,197 @@
+.noto-sans-kr-uniquifier {
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+}
+
+.nuosu-sil-regular {
+    font-family: "Nuosu SIL", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.header-container {
+    position: relative;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+/* 메인 이미지 스타일 */
+.main-image {
+    width: 100vw; /* 가로를 화면 너비에 꽉 채우기 */
+    max-width: none; /* max-width 제한 해제 */
+    height: 600px; /* 높이를 600px로 고정 */
+    object-fit: cover; /* 비율을 유지하며 이미지가 컨테이너에 맞게 조정 */
+}
+
+.gallery-background {
+    position: absolute;
+    bottom: 0; /* 이미지의 맨 아래에 고정 */
+    left: 50%;
+    transform: translateX(-50%); /* 수평 중앙 정렬 */
+    width: 1040px; /* 고정된 너비 */
+    height: 70px; /* 고정된 높이 */
+    background-color: #ffffff; /* 흰색 배경 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.gallery-background h2 {
+    font-size: 32px;
+    font-family: "Nuosu SIL", serif;
+    color: #333; /* 텍스트 색상 */
+    margin: 0;
+}
+
+.main-link {
+    text-decoration: none;
+}
+
+
+.category-buttons {
+    position: absolute;
+    bottom: 10px; /* 아래쪽 위치 */
+    right: 10px; /* 오른쪽 위치 */
+    display: flex;
+    gap: 3px;
+}
+
+.category-button {
+    padding: 5px 15px;
+    font-size: 14px;
+    color: #969595;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.category-button:hover,
+.category-button.active {
+    color: #333;
+}
+
+/* 썸네일 갤러리 스타일 */
+.thumbnail-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 사진 3개씩 가로로 배치 */
+    gap: 15px;
+    max-width: 960px;
+    margin: 0 auto; /* 가운데 정렬 */
+    justify-items: center; /* 사진 가운데 정렬 */
+}
+
+.thumbnail {
+    width: 100%; /* 부모의 너비에 맞춤 */
+    max-width: 300px; /* 썸네일 최대 너비 */
+    aspect-ratio: 1 / 1; /* 정사각형 */
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 클릭 시 원본 크기로 표시되도록 모달 스타일 */
+.thumbnail img:active {
+    transform: scale(1.1); /* 클릭 시 확대 */
+}
+
+.thumbnail:hover img {
+    transform: scale(1.05); /* 호버 시 살짝 확대 */
+    transition: transform 0.3s ease;
+}
+
+/* 모달 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 8px;
+}
+
+/* 모달 내 화살표 네비게이션 */
+.modal-navigation .prev,
+.modal-navigation .next {
+    position: absolute;
+    top: 50%;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.modal-navigation .prev {
+    left: 10px;
+}
+
+.modal-navigation .next {
+    right: 10px;
+}
+
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+}
+
+
+/* 페이지 네이션 스타일 */
+.pagination {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination span {
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px 10px;
+    color: #969595; /* 기본 회색 텍스트 색상 */
+    border-radius: 5px;
+    font-family: "Noto Sans KR", serif;
+    border: none; /* 테두리 제거 */
+    transition: color 0.3s ease; /* 색상 전환 효과 추가 */
+}
+
+.pagination span:hover,
+.pagination span.active { /* hover 및 active 클래스에 스타일 적용 */
+    color: #333; /* 검정색 텍스트 */
+}

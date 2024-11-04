@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESDK</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/gallery.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Dongle&family=Noto+Sans+KR:wght@100..900&family=Plaster&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="main-link">
+            <span class="es-text">ES</span><span class="dk-text">DK</span>
+        </a>
+    </header>
+
+    <div class="header-container">
+        <img src="/images/photo/gallery-main.png" alt="도겸(DK)" class="main-image">
+        <div class="gallery-background">
+            <h2 class="text">GALLERY</h2>
+            <div class="category-buttons">
+                <button class="category-button active" data-category="album">앨범</button>
+                <button class="category-button" data-category="photo">화보</button>
+                <button class="category-button" data-category="legend">레전드</button>
+            </div>
+        </div>
+    </div>
+
+
+    <nav>
+        <a href="/profile">Profile</a>
+        <a href="/album">Album</a>
+        <a href="/example">Cover</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/point">Point</a>
+    </nav>
+    <i class="bi bi-globe2 globe-icon"></i>
+
+    <section class="video-section">
+
+        <!-- 갤러리 이미지 표시 영역 -->
+        <div class="thumbnail-gallery"></div>
+
+        <!-- 모달 구조 -->
+        <div class="modal" id="image-modal" style="display: none;">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modal-image">
+            <div class="modal-navigation">
+                <span class="prev">&#10094;</span>
+                <span class="next">&#10095;</span>
+            </div>
+        </div>
+
+        <!-- 페이지 네이션 -->
+        <div class="pagination">
+            <span onclick="showPage(1)">1</span>
+            <span onclick="showPage(2)">2</span>
+            <span onclick="showPage(3)">3</span>
+        </div>
+    </section>
+
+
+
+    <footer class="footer-banner" style="margin-top: 50px;">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="es-text">ES</span><span class="dk-text">DK</span>
+            </div>
+            <p>@2024 Eternal Sunshine Dokyeom. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="/js/gallery.js"></script>
+</body>
+
+</html>
