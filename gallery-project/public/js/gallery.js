@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    loadGallery('album', 1); // 기본 카테고리 및 페이지 로드
+    loadGallery('album', 1);
 
     // 카테고리 버튼 클릭 이벤트
     document.querySelectorAll('.category-button').forEach(button => {
@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 모달 관련 요소 초기화
     const modal = document.getElementById('image-modal');
     const modalImg = document.getElementById('modal-image');
     const closeBtn = document.querySelector('.close');
@@ -31,13 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     let galleryImages = [];
 
-    // API를 통해 갤러리 불러오기
     async function loadGallery(category, page) {
         const response = await fetch(`/api/gallery?category=${category}&page=${page}`);
         const images = await response.json();
 
         const galleryContainer = document.querySelector('.thumbnail-gallery');
-        galleryContainer.innerHTML = ''; // 기존 이미지를 지움
+        galleryContainer.innerHTML = '';
 
         images.forEach((image, index) => {
             const thumbnail = document.createElement('div');
@@ -45,12 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
             thumbnail.innerHTML = `<img src="${image.url}" alt="${image.title}"><p>${image.title}</p>`;
             galleryContainer.appendChild(thumbnail);
 
-            // 이미지 클릭 시 모달 열기
             thumbnail.querySelector('img').addEventListener('click', () => {
                 modal.style.display = 'flex';
                 modalImg.src = image.url;
                 currentIndex = index;
-                galleryImages = images; // 현재 카테고리의 이미지를 갱신
+                galleryImages = images;
             });
         });
     }
@@ -70,6 +67,21 @@ document.addEventListener('DOMContentLoaded', () => {
     nextBtn.addEventListener('click', () => {
         currentIndex = (currentIndex + 1) % galleryImages.length;
         modalImg.src = galleryImages[currentIndex].url;
+    });
+
+    // 키보드 화살표로 네비게이션
+    document.addEventListener('keydown', (event) => {
+        if (modal.style.display === 'flex') {
+            if (event.key === 'ArrowLeft') {
+                currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+                modalImg.src = galleryImages[currentIndex].url;
+            } else if (event.key === 'ArrowRight') {
+                currentIndex = (currentIndex + 1) % galleryImages.length;
+                modalImg.src = galleryImages[currentIndex].url;
+            } else if (event.key === 'Escape') {
+                modal.style.display = 'none';
+            }
+        }
     });
 
     // 모달 외부 클릭 시 닫기
