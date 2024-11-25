@@ -21,15 +21,15 @@
 <body>
 
     <header>
-        <a href="index.html" class="main-link">
+        <a href="/" class="main-link">
             <span class="es-text">ES</span><span class="dk-text">DK</span>
         </a>
     </header>
 
     <div class="header-container">
-        <img src="/images/gallery-main.png" alt="도겸(DK)" class="main-image">
+        <img src="/images/photo/point-main.png" alt="도겸(DK)" class="main-image">
         <div class="gallery-background">
-            <h2 class="text">GALLERY</h2>
+            <h2 class="text">POINT</h2>
         </div>
     </div>
 
@@ -44,10 +44,32 @@
     <i class="bi bi-globe2 globe-icon"></i>
 
     <section class="video-section">
+        <!-- 쇼츠 동영상 리스트 -->
+        <h3 class="section-title"><i class="bi bi-youtube"></i> DK의 입덕 Point 동영상</h3>
+        <div class="shorts-wrapper">
+            <button class="nav-btn prev-btn" onclick="showPrevShorts()">&lt;</button>
+            <div id="shorts-container" class="shorts-container"></div>
+            <button class="nav-btn next-btn" onclick="showNextShorts()">&gt;</button>
+        </div>
 
- 
+        <!-- 구분선 -->
+        <div class="divider"></div>
+
+        <!-- 큰 동영상 -->
+        <div class="main-video-container">
+            <button class="nav-btn prev-btn2" onclick="loadPrevVideo()">&lt;</button>
+            <div id="main-video-player"></div>
+            <button class="nav-btn next-btn2" onclick="loadNextVideo()">&gt;</button>
+        </div>
     </section>
 
+    <!-- 쇼츠 모달 -->
+    <div id="shorts-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeShortsModal()">&times;</span>
+            <div id="shorts-video-player"></div>
+        </div>
+    </div>
 
 
     <footer class="footer-banner" style="margin-top: 50px;">
