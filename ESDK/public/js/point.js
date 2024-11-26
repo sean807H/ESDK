@@ -24,12 +24,12 @@ function onPlayerReady() {
 // 쇼츠 동영상 리스트 불러오기
 const shortsData = [
     { videoId: '6yQEEtQqp4E', thumbnail: 'https://img.youtube.com/vi/6yQEEtQqp4E/hqdefault.jpg' },
-    { videoId: 'Yf6GV_QYtMI', thumbnail: 'https://img.youtube.com/vi/Yf6GV_QYtMI/hqdefault.jpg' },
+    { videoId: 'ZncpLsoxG1o', thumbnail: 'https://img.youtube.com/vi/ZncpLsoxG1o/hqdefault.jpg' },
     { videoId: 'crV5cSpvWKk', thumbnail: 'https://img.youtube.com/vi/crV5cSpvWKk/hqdefault.jpg' },
     { videoId: 'koGabvnDGxU', thumbnail: 'https://img.youtube.com/vi/koGabvnDGxU/hqdefault.jpg' },
     { videoId: 'ayjZqbEbTgg', thumbnail: 'https://img.youtube.com/vi/ayjZqbEbTgg/hqdefault.jpg' },
     { videoId: 'HxiyAg4mSw4', thumbnail: 'https://img.youtube.com/vi/HxiyAg4mSw4/hqdefault.jpg' },
-    { videoId: 'QINU2nxUjq8', thumbnail: 'https://img.youtube.com/vi/QINU2nxUjq8/hqdefault.jpg' },
+    { videoId: 'CcW4zr5PmYs', thumbnail: 'https://img.youtube.com/vi/CcW4zr5PmYs/hqdefault.jpg' },
     { videoId: 'hAUjIfA5R0A', thumbnail: 'https://img.youtube.com/vi/hAUjIfA5R0A/hqdefault.jpg' }
 ];
 
@@ -93,8 +93,40 @@ function loadMainVideo(index) {
     if (isPlayerReady) {
         player.cueVideoById(mainVideos[index]);
         currentMainVideoIndex = index;
+        updateIndicators();
     }
 }
+
+// 동그라미 버튼 상태 업데이트
+function updateIndicators() {
+    const indicators = document.querySelectorAll('.indicator');
+    indicators.forEach((indicator, index) => {
+        if (index === currentMainVideoIndex) {
+            indicator.classList.add('active');
+        } else {
+            indicator.classList.remove('active');
+        }
+    });
+}
+
+// 동그라미 버튼 생성
+function createIndicators() {
+    const indicatorsContainer = document.getElementById('video-indicators');
+    indicatorsContainer.innerHTML = ''; // 기존 버튼 초기화
+    mainVideos.forEach((_, index) => {
+        const indicator = document.createElement('div');
+        indicator.classList.add('indicator');
+        indicator.addEventListener('click', () => loadMainVideo(index));
+        indicatorsContainer.appendChild(indicator);
+    });
+    updateIndicators();
+}
+
+// 초기화
+document.addEventListener('DOMContentLoaded', () => {
+    createIndicators();
+    loadMainVideo(0); // 첫 번째 동영상 로드
+});
 
 // 큰 동영상에서 다음 동영상 로드
 function loadNextVideo() {

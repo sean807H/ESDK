@@ -44,10 +44,10 @@
 
 
 .gallery-background h2 {
-    font-size: 32px;
+    font-size: 35px;
     font-family: "Nuosu SIL", serif;
     color: #333; /* 텍스트 색상 */
-    margin: 0;
+    margin-top: 10px;
 }
 
 .main-link {
@@ -58,9 +58,13 @@
     font-size: 25px;
     font-family: "Noto Sans KR", serif;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 80px;
     margin-right: 650px;
     text-align: center;
+}
+
+i{
+    color: red;
 }
 
 /* 쇼츠 동영상 간격 조정 */
@@ -84,8 +88,8 @@
 }
 
 .shorts-container img {
-    width: 211px; /* 유튜브 쇼츠 썸네일과 비슷한 넓이 */
-    height: 375px; /* 유튜브 쇼츠 썸네일과 비슷한 높이 */
+    width: 211px;
+    height: 375px;
     border-radius: 8px;
     cursor: pointer;
     transition: transform 0.2s;
@@ -101,7 +105,8 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 20px;
+    font-family: "Nuosu SIL", serif;
+    font-size: 25px;
     color: #333;
     background-color: #ffffff;
     border: none;
@@ -117,21 +122,19 @@
 }
 
 .prev-btn {
-    left: 185px; /* 더 가깝게 */
+    left: 190px;
 }
 
 .next-btn {
-    right: 185px; /* 더 가깝게 */
+    right: 190px;
 }
 
 .prev-btn2 {
-    left: 90px; /* 더 가깝게 */
-    margin-top: -50px;
+    left: 500px;
 }
 
 .next-btn2 {
-    right: 90px; /* 더 가깝게 */
-    margin-top: -50px;
+    right: 500px;
 }
 
 /* 구분선 스타일 */
@@ -145,12 +148,11 @@
 /* 큰 동영상 컨테이너 간격 및 크기 조정 */
 .main-video-container {
     position: relative;
-    max-width: 877px; /* 큰 동영상 크기 조정 */
-    height: 493px;
-    margin: 100px auto; /* 위아래 100px 간격 */
+    margin: auto; /* 위아래 100px 간격 */
+    margin-top: 100px;
+    margin-bottom: 50px;
     text-align: center;
 }
-
 
 
 /* 쇼츠 모달 스타일 */
@@ -164,7 +166,7 @@
     background-color: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 1;
 }
 
 .modal-content {
@@ -186,3 +188,26 @@
     color: #ffffff;
     cursor: pointer;
 }
+
+.video-indicators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 100px;
+}
+
+.indicator {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgb(152, 152, 152);
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.indicator.active {
+    background-color: rgb(192, 192, 255);
+    transform: scale(1.2);
+}
+
