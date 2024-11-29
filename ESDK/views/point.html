@@ -44,15 +44,13 @@
             <a href="/point">Point</a>
         </div>
     </nav>
-    <i class="bi bi-globe2 globe-icon"></i>
+    <i class="bi bi-gem globe-icon"></i>
 
     <section class="video-section">
         <!-- 쇼츠 동영상 리스트 -->
         <h3 class="section-title"><i class="bi bi-youtube"></i> DK의 입덕 Point 동영상</h3>
         <div class="shorts-wrapper">
-            <button class="nav-btn prev-btn" onclick="showPrevShorts()">&lt;</button>
             <div id="shorts-container" class="shorts-container"></div>
-            <button class="nav-btn next-btn" onclick="showNextShorts()">&gt;</button>
         </div>
 
         <!-- 구분선 -->
@@ -60,14 +58,11 @@
 
         <!-- 큰 동영상 -->
         <div class="main-video-container">
-            <button class="nav-btn prev-btn2" onclick="loadPrevVideo()">&lt;</button>
             <div id="main-video-player"></div>
-            <button class="nav-btn next-btn2" onclick="loadNextVideo()">&gt;</button>
         </div>
         <div id="video-indicators" class="video-indicators"></div>
     </section>
     
-
     <!-- 쇼츠 모달 -->
     <div id="shorts-modal" class="modal">
         <div class="modal-content">

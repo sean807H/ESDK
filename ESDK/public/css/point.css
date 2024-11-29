@@ -58,9 +58,10 @@
     font-size: 25px;
     font-family: "Noto Sans KR", serif;
     font-weight: bold;
-    margin-top: 80px;
-    margin-right: 650px;
+    margin-top: 70px;
     text-align: center;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 i{
@@ -72,7 +73,7 @@ i{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 100px auto; /* 위아래 100px 간격 */
+    margin: 50px auto; /* 위아래 100px 간격 */
     width: 80%; /* 전체 레이아웃 폭에 맞춤 */
     position: relative;
 }
@@ -80,14 +81,18 @@ i{
 /* 쇼츠 동영상 스타일 */
 .shorts-container {
     display: flex;
-    gap: 25px; /* 쇼츠 간격 */
-    justify-content: center;
-    overflow: hidden;
+    gap: 20px; /* 쇼츠 간격 */
+    justify-content: flex-start; /* 가로로 정렬 */
+    overflow-x: auto; /* 가로 스크롤 활성화 */
     width: 100%; /* 넓은 레이아웃에 맞춤 */
     margin: auto;
+    height: auto; /* 높이 제한 해제 */
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .shorts-container img {
+    flex-shrink: 0; /* 이미지 축소 방지 */
     width: 211px;
     height: 375px;
     border-radius: 8px;
@@ -100,90 +105,83 @@ i{
     transform: scale(1.05);
 }
 
-/* 화살표 버튼 위치 조정 */
-.nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: "Nuosu SIL", serif;
-    font-size: 25px;
-    color: #333;
-    background-color: #ffffff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    padding: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
+/* 쇼츠 모달 스타일 */
+#shorts-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
     justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.prev-btn {
-    left: 190px;
+/* 쇼츠 컨테이너 */
+#shorts-container {
+    display: flex;
+    gap: 20px; /* 이미지 간 간격 */
+    overflow-x: auto; /* 가로 스크롤 활성화 */
+    max-width: 80%; /* 반응형 크기 제한 */
+    height: 90%; /* 반응형 높이 제한 */
+    padding: 10px;
+    box-sizing: border-box;
+    scrollbar-width: none;
 }
 
-.next-btn {
-    right: 190px;
+#shorts-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari에서 스크롤바 숨기기 */
 }
 
-.prev-btn2 {
-    left: 500px;
+/* 쇼츠 썸네일 */
+.short-thumbnail {
+    flex: 0 0 auto; /* 가로 방향으로 정렬 */
+    width: calc(25% - 10px); /* 데스크톱: 4개가 보이도록 설정 */
+    height: auto; /* 비율 유지 */
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
 }
 
-.next-btn2 {
-    right: 500px;
-}
-
-/* 구분선 스타일 */
-.divider {
-    width: 1270px;
-    height: 2px;
-    background-color: #ddd;
-    margin: 30px auto;
+.short-thumbnail:hover {
+    transform: scale(1.1); /* 호버 시 확대 효과 */
 }
 
 /* 큰 동영상 컨테이너 간격 및 크기 조정 */
 .main-video-container {
     position: relative;
-    margin: auto; /* 위아래 100px 간격 */
+    margin: auto; /* 수평 가운데 정렬 */
     margin-top: 100px;
     margin-bottom: 50px;
     text-align: center;
-}
-
-
-/* 쇼츠 모달 스타일 */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-}
-
-.modal-content {
-    position: relative;
-    background-color: #fff;
-    width: 470px;
-    height: 836px;
+    max-width: 100%; /* 컨테이너가 화면을 벗어나지 않도록 제한 */
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
+
+#main-video-player {
+    width: 100%; /* 컨테이너 크기에 맞게 동영상 크기 조정 */
+    height: calc(100vw * 9 / 16); /* 16:9 비율 유지 */
+    max-width: 640px; /* 최대 크기 제한 (데스크톱) */
+    max-height: calc(640px * 9 / 16); /* 데스크톱 최대 높이 */
+    margin: auto;
+}
+
+/* 구분선 스타일 */
+.divider {
+    width: 100%; /* 기본적으로 전체 폭 */
+    max-width: 1270px; /* 최대 너비 제한 */
+    height: 2px;
+    background-color: #ddd;
+    margin: 30px auto;
 }
 
 .close-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 20px;
+    right: 50px;
     font-size: 40px;
     color: #ffffff;
     cursor: pointer;
@@ -211,3 +209,88 @@ i{
     transform: scale(1.2);
 }
 
+@media screen and (max-width: 1024px) {
+
+    .header-container {
+        position: relative;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+
+    .main-image {
+        width: 100vw;
+        max-width: none;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .gallery-background {
+        width: 634px; /* 고정된 너비 */
+        height: 53px; /* 고정된 높이 */
+    }
+    
+    .gallery-background h2 {
+        font-size: 30px;
+    }
+
+    .section-title {
+        font-size: 22px;
+    }
+
+    #main-video-player {
+        max-width: 540px; /* 태블릿에서 적절한 크기 */
+        max-height: calc(540px * 9 / 16); /* 16:9 비율 */
+    }
+
+    .divider {
+        max-width: 700px; /* 태블릿에서 구분선 크기 축소 */
+    }
+
+    .indicator {
+        width: 13px; /* 크기 축소 */
+        height: 13px;
+    }
+    .indicator.active {
+        transform: scale(1.3); /* 활성화된 상태에서 약간 더 커짐 */
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .header-container {
+        height: 300px;
+    }
+
+    .gallery-background {
+        width: 320px; /* 고정된 너비 */
+        height: 39px; /* 고정된 높이 */
+    }
+    
+    .gallery-background h2 {
+        font-size: 25px;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    #main-video-player {
+        max-width: 80%; /* 모바일에서 화면 너비에 맞춤 */
+        height: calc(77vw * 9 / 16); /* 16:9 비율 */
+    }
+
+    .divider {
+        max-width: 80%; /* 모바일에서는 화면 폭의 90% */
+    }
+
+    .indicator {
+        width: 12px; /* 더 작은 크기 */
+        height: 12px;
+    }
+    .indicator.active {
+        transform: scale(1.4); /* 활성화된 상태에서 더 큰 크기 */
+    }
+}

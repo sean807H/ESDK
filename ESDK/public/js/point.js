@@ -33,15 +33,16 @@ const shortsData = [
     { videoId: 'hAUjIfA5R0A', thumbnail: 'https://img.youtube.com/vi/hAUjIfA5R0A/hqdefault.jpg' }
 ];
 
+// 쇼츠 동영상 리스트 불러오기
 function loadYouTubeShorts() {
     const shortsContainer = document.getElementById('shorts-container');
-    shortsContainer.innerHTML = ''; 
-    const start = currentShortsPage * 4;
-    const end = start + 4;
-    shortsData.slice(start, end).forEach(short => {
+    shortsContainer.innerHTML = ''; // 기존 내용을 초기화
+
+    shortsData.forEach(short => {
         const img = document.createElement('img');
         img.src = short.thumbnail;
         img.alt = "YouTube Short";
+        img.classList.add('short-thumbnail'); // 스타일을 위한 클래스 추가
         img.addEventListener('click', () => openShortsModal(short.videoId));
         shortsContainer.appendChild(img);
     });
@@ -52,16 +53,48 @@ function openShortsModal(videoId) {
     const modal = document.getElementById('shorts-modal');
     modal.style.display = 'flex';
 
+    // YouTube IFrame API 준비 상태 확인
+    if (typeof YT === 'undefined' || typeof YT.Player === 'undefined') {
+        console.error('YouTube IFrame API is not ready.');
+        return;
+    }
+
+    // 동적으로 크기 계산
+    const playerSize = getPlayerSize();
+
+    // 쇼츠 플레이어 초기화 또는 업데이트
     if (!shortsPlayer) {
         shortsPlayer = new YT.Player('shorts-video-player', {
-            height: '836',
-            width: '470',
+            height: playerSize.height,
+            width: playerSize.width,
             videoId: videoId
         });
     } else {
+        shortsPlayer.setSize(playerSize.width, playerSize.height); // 플레이어 크기 업데이트
         shortsPlayer.cueVideoById(videoId);
     }
 }
+
+// 플레이어 크기 계산 함수
+function getPlayerSize() {
+    const width = window.innerWidth;
+
+    if (width > 1024) {
+        return { width: 470, height: 836 }; // Desktop
+    } else if (width > 600) {
+        return { width: 430, height: 770 }; // Tablet
+    } else {
+        return { width: 380, height: 680 }; // Mobile
+    }
+}
+
+// 창 크기 변경 시 플레이어 크기 동적 업데이트
+window.addEventListener('resize', () => {
+    if (shortsPlayer) {
+        const playerSize = getPlayerSize();
+        shortsPlayer.setSize(playerSize.width, playerSize.height);
+    }
+});
 
 // 쇼츠 모달 닫기
 function closeShortsModal() {
@@ -70,18 +103,6 @@ function closeShortsModal() {
     if (shortsPlayer) {
         shortsPlayer.stopVideo();
     }
-}
-
-// 다음 쇼츠 페이지 표시
-function showNextShorts() {
-    currentShortsPage = (currentShortsPage + 1) % 2;
-    loadYouTubeShorts();
-}
-
-// 이전 쇼츠 페이지 표시
-function showPrevShorts() {
-    currentShortsPage = (currentShortsPage - 1 + 2) % 2;
-    loadYouTubeShorts();
 }
 
 // 메인 동영상을 업데이트하는 함수
@@ -127,18 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
     createIndicators();
     loadMainVideo(0); // 첫 번째 동영상 로드
 });
-
-// 큰 동영상에서 다음 동영상 로드
-function loadNextVideo() {
-    currentMainVideoIndex = (currentMainVideoIndex + 1) % mainVideos.length;
-    loadMainVideo(currentMainVideoIndex);
-}
-
-// 큰 동영상에서 이전 동영상 로드
-function loadPrevVideo() {
-    currentMainVideoIndex = (currentMainVideoIndex - 1 + mainVideos.length) % mainVideos.length;
-    loadMainVideo(currentMainVideoIndex);
-}
 
 // 페이지 로드 시 쇼츠와 큰 동영상 로드
 document.addEventListener('DOMContentLoaded', () => {
