@@ -3,13 +3,17 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
+const PORT = 3000;
 
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+// 기본적인 라우팅 설정
+app.get('/', (req, res) => {
+    res.send('Hello from Vercel!');
+});
 
-module.exports = app;
+// Vercel에서는 express를 사용한 서버리스 함수처럼 작동해야 합니다.
+module.exports = (req, res) => {
+    app(req, res);
+};
 
 // 1. 정적 파일 제공 설정 (public과 images 폴더)
 app.use(express.static(path.join(__dirname, 'public')));
