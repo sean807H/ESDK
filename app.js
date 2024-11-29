@@ -10,10 +10,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // 기본 라우트 설정
 app.get('/', (req, res) => {
-  res.send('Hello from Vercel!');
+  res.sendFile(path.join(__dirname, 'public', 'ESDK', 'index.html'));
 });
 
-// Vercel 서버리스 함수로 변환
+// 서버리스 함수로 export
 module.exports = (req, res) => {
   app(req, res);  // Express 서버 실행
 };
