@@ -3,7 +3,15 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const PORT = 3000;
+app.get("/", (req, res) => {
+    res.send("Hello, Vercel!");
+  });
+
+// Vercel은 PORT를 환경 변수로 제공하므로 이 값을 사용합니다.
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 
 // 1. 정적 파일 제공 설정 (public과 images 폴더)
 app.use(express.static(path.join(__dirname, 'public')));
