@@ -2,8 +2,8 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-// 정적 파일 경로 설정
-app.use(express.static(path.join(__dirname, 'public')));
+// 정적 파일 제공
+app.use(express.static(path.join(__dirname, 'ESDK')));
 
 // 기본 라우트 설정
 app.get('/', (req, res) => {
@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 
 // 서버리스 함수로 export
 module.exports = (req, res) => {
-  app(req, res);  // Express 서버 실행
+  app(req, res); // Express 서버 실행
 };
 
 // 1. 정적 파일 제공 설정 (public과 images 폴더)
