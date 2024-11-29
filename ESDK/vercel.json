@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "ESDK/app.js",
+      "src": "app.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "ESDK/app.js"
+      "dest": "/app.js"
     }
   ]
 }
