@@ -202,10 +202,6 @@
     justify-content: center;
 }
 
-
-
-
-
 /* 페이지 네이션 스타일 */
 .pagination {
     margin-top: 40px;
@@ -229,3 +225,153 @@
 .pagination span.active { /* hover 및 active 클래스에 스타일 적용 */
     color: #333; /* 검정색 텍스트 */
 }
+
+@media screen and (max-width: 1024px) {
+
+    .dk-image {
+        display: none;
+    }
+
+    .thumbnail-gallery {
+        grid-template-columns: repeat(3, 1fr); /* 3열 그리드 유지 */
+        gap: 10px; /* 간격 고정 (기존보다 좁게 설정) */
+        justify-items: center;
+        max-width: 600px; /* 갤러리 전체 폭 조정 */
+        margin: 0 auto;
+    }
+
+    .thumbnail {
+        width: 170px; /* 이미지 크기 170px */
+        height: 170px;
+    }
+
+    .header-container {
+        position: relative;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+
+    .main-image {
+        width: 100vw;
+        max-width: none;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .gallery-background {
+        width: 634px; /* 고정된 너비 */
+        height: 53px; /* 고정된 높이 */
+    }
+    
+    .gallery-background h2 {
+        font-size: 30px;
+    }
+
+    .main-video-container{
+        margin-top: 50px;
+    }
+
+    .category-button {
+        font-size: 12px; /* 폰트 크기 줄임 */
+    }
+
+    /* 모달 이미지 스타일 */
+    .modal-content {
+        max-width: 70%;
+        max-height: 60%;
+        margin: auto;
+    }
+
+    /* 모달 내 화살표 네비게이션 */
+    .modal-navigation .prev,
+    .modal-navigation .next {
+        font-size: 32px;
+    }
+
+    .modal-navigation .prev {
+        left: 70px; /* 이미지와 조금 더 가까이 위치 */
+    }
+
+    .modal-navigation .next {
+        right: 70px; /* 이미지와 조금 더 가까이 위치 */
+    }
+    
+}
+
+@media screen and (max-width: 600px) {
+
+    .thumbnail-gallery {
+        grid-template-columns: repeat(3, 1fr); /* 2열 그리드 */
+        gap: 10px; /* 간격 고정 (더 좁게 설정) */
+        justify-items: center;  
+        max-width: 350px; /* 갤러리 전체 폭 조정 */
+        margin: 0 auto;
+    }
+
+    .thumbnail {
+        width: 100px; /* 이미지 크기 140px */
+        height: 100px;
+    }
+
+    .header-container {
+        height: 300px;
+    }
+
+    .gallery-background {
+        width: 320px; /* 고정된 너비 */
+        height: 39px; /* 고정된 높이 */
+    }
+    
+    .gallery-background h2 {
+        font-size: 25px;
+    }
+
+     /* .category-buttons 스타일 수정 */
+     .category-buttons {
+        position: absolute; /* 절대 위치 */
+        bottom: 60px; /* 배경 위에 위치 */
+        right: 10px; /* 오른쪽 정렬 */
+        display: flex;
+        gap: 5px; /* 버튼 간격 */
+    }
+
+    .category-button {
+        padding: 5px 10px; /* 버튼 크기 조정 */
+        font-size: 12px; /* 작은 폰트 */
+        color: #ffffff;
+        background-color: rgba(212, 232, 255, 0.8); /* 반투명 배경 */
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .category-button:hover {
+        color: #ffc1c1;
+    }
+
+    /* 모달 이미지 스타일 */
+    .modal-content {
+        max-width: 60%;
+        max-height: 50%;
+        margin: auto;
+    }
+
+    /* 모달 내 화살표 네비게이션 */
+    .modal-navigation .prev,
+    .modal-navigation .next {
+        font-size: 28px;
+    }
+
+    .modal-navigation .prev {
+        left: 50px; /* 이미지와 조금 더 가까이 위치 */
+    }
+
+    .modal-navigation .next {
+        right: 50px; /* 이미지와 조금 더 가까이 위치 */
+    }
+}
+

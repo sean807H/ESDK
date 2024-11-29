@@ -41,7 +41,6 @@
     justify-content: center;
 }
 
-
 .cover-background h2 {
     font-size: 35px;
     font-family: "Nuosu SIL", serif;
@@ -63,7 +62,6 @@
     align-items: center;
 }
 
-
 .main-video-container {
     position: relative;
     width: 100%;
@@ -82,7 +80,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
 .main-video-title {
     font-size: 18px;
     color: #333;
@@ -92,7 +89,6 @@
     margin-left: auto;
     margin-right: auto;
 }
-
 
 /* 썸네일 갤러리 스타일 */
 .thumbnail-gallery {
@@ -139,8 +135,6 @@
     color: rgba(255, 255, 255, 1); /* hover 시 선명한 흰색 텍스트 */
 }
 
-
-
 /* 페이지 네이션 스타일 */
 .pagination {
     margin-top: 40px;
@@ -163,4 +157,66 @@
 .pagination span:hover,
 .pagination span.active { /* hover 및 active 클래스에 스타일 적용 */
     color: #333; /* 검정색 텍스트 */
+}
+
+@media screen and (max-width: 1024px) {
+
+    .header-container {
+        width: auto;
+        height: 400px; /* 고정된 세로 크기 */
+        padding: 0 20px; /* 양옆 여백 조정 */
+        margin: 0 auto; /* 중앙 정렬 */
+    }
+
+    .main-image {
+        width: 100vw; /* 가로를 화면 너비에 꽉 채우기 */
+        max-width: none; /* 최대 크기 제한 */
+        height: 100%; /* 높이를 항상 초기 상태 유지 */
+        padding-left: 0; /* 패딩 제거 */
+        margin: 0 auto; /* 중앙 정렬 */
+        object-fit: cover; /* 비율을 유지하며 이미지가 컨테이너에 맞게 조정 */
+    }
+
+    .cover-background {
+        width: 634px; /* 고정된 너비 */
+        height: 53px; /* 고정된 높이 */
+    }
+    
+    .cover-background h2 {
+        font-size: 30px;
+    }
+
+    .main-video-container{
+        margin-top: 50px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    
+    .header-container {
+        width: auto;
+        height: 300px; /* 고정된 세로 크기 */
+        padding: 0 10px; /* 양옆 여백 조정 */
+        margin: 0 auto; /* 중앙 정렬 */
+    }
+
+    .main-image {
+        width: 100vw; /* 가로를 화면 너비에 꽉 채우기 */
+        max-width: none; /* 최대 크기 제한 */
+        height: 100%; /* 높이를 항상 초기 상태 유지 */
+        padding-left: 0; /* 패딩 제거 */
+        margin: 0 auto; /* 중앙 정렬 */
+        object-fit: cover; /* 비율을 유지하며 이미지가 컨테이너에 맞게 조정 */
+    }
+
+    .cover-background {
+        width: 320px; /* 고정된 너비 */
+        height: 39px; /* 고정된 높이 */
+    }
+    
+    .cover-background h2 {
+        font-size: 25px;
+    }
+
 }
