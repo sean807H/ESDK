@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // 기본 라우트 설정
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'ESDK', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'ESDK', 'views', 'index.html'));
 });
 
 // 서버리스 함수로 export
