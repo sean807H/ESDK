@@ -90,7 +90,6 @@ h2 {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     justify-items: center;
-    /* margin-top: 20px; */
 }
 
 .album-item {
@@ -156,6 +155,92 @@ h2 {
 /* .album-item에 마우스를 올렸을 때 .album-info가 보이도록 설정 */
 .album-item:hover .album-info {
     opacity: 0.8; /* 마우스 오버 시 불투명도 설정 */
+}
+
+/* 1024px 이하 화면 크기 대응 */
+@media screen and (max-width: 1024px) {
+
+    .header-container {
+        width: auto;
+        height: 400px; /* 고정된 세로 크기 */
+        padding: 0 20px; /* 양옆 여백 조정 */
+        margin: 0 auto; /* 중앙 정렬 */
+    }
+
+    .main-image {
+        width: auto; /* 비율 유지 */
+        max-width: 600px; /* 최대 크기 제한 */
+        height: 100%; /* 높이를 항상 초기 상태 유지 */
+        padding-left: 0; /* 패딩 제거 */
+        margin: 0 auto; /* 중앙 정렬 */
+    }
+
+    .profile-title {
+        bottom: 200px; /* 비율에 맞게 위치 조정 */
+        right: 50px; /* 오른쪽으로 조금씩 이동 */
+        padding-right: 0; /* 추가적인 패딩 제거 */
+    }
+
+    .profile-title h1 {
+        display: none; /* 1024px 이하에서는 h1 숨김 */
+    }
+
+    h2 {
+        font-size: 1.8rem; /* 헤딩 크기를 조정 */
+        position: static; /* 위치를 고정하지 않음 */
+        text-align: left; /* 기존 정렬 유지 */
+    }
+
+    .album-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3열 그리드 유지 */
+        gap: 30px; /* 간격 유지 */
+        justify-items: center;
+    }
+
+    .album-item {
+        width: 170px; /* 크기를 180px로 조정 */
+        height: 170px;
+    }
+}
+
+/* 600px 이하 화면 크기 대응 */
+@media screen and (max-width: 600px) {
+    
+    .header-container {
+        width: auto;
+        height: 300px; /* 고정된 세로 크기 */
+        padding: 0 10px; /* 양옆 여백 조정 */
+        margin: 0 auto; /* 중앙 정렬 */
+    }
+
+    .main-image {
+        width: auto; /* 비율 유지 */
+        max-width: 350px; /* 최대 크기 제한 */
+        height: 100%; /* 높이 유지 */
+        margin: 0 auto; /* 중앙 정렬 */
+        padding-left: 0; /* 패딩 제거 */
+    }
+
+    .profile-title {
+        bottom: 150px; /* 위치 조정 */
+        right: 20px; /* 우측 여백 축소 */
+        padding-right: 0; /* 추가 패딩 제거 */
+    }
+
+    h2 {
+        font-size: 1.8rem; /* 헤딩 크기 조정 */
+    }
+
+    .album-grid {
+        grid-template-columns: 1fr; /* 1열 그리드로 변경 */
+        gap: 20px; /* 간격 축소 */
+        justify-items: center;
+    }
+
+    .album-item {
+        width: 150px; /* 크기를 150px로 조정 */
+        height: 150px;
+    }
 }
 
 

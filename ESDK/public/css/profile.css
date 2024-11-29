@@ -27,7 +27,7 @@
     width: auto;
     padding-left: 250px;
     max-width: 600px;
-    height: 100%;
+    height: 100%; /* 높이를 초기 상태에서 고정 */
 }
 
 .profile-title {
@@ -35,6 +35,7 @@
     position: relative;
     bottom: 350px;
     right: 500px;
+    padding-right: 0;
 }
 
 .profile-title h1 {
@@ -124,3 +125,128 @@ strong {
     margin-top: 50px;
     margin-bottom: 100px;
 }
+
+.menu-toggle {
+    display: none;
+}
+
+/* 1024px 이하 화면 크기 대응 */
+@media screen and (max-width: 1024px) {
+
+    .header-container {
+        width: auto;
+        height: 400px; /* 고정된 세로 크기 */
+        padding: 0 20px; /* 양옆 여백 조정 */
+        margin: 0 auto; /* 중앙 정렬 */
+    }
+
+    .main-image {
+        width: auto; /* 비율 유지 */
+        max-width: 600px; /* 최대 크기 제한 */
+        height: 100%; /* 높이를 항상 초기 상태 유지 */
+        padding-left: 0; /* 패딩 제거 */
+        margin: 0 auto; /* 중앙 정렬 */
+    }
+
+    .profile-title {
+        bottom: 200px; /* 비율에 맞게 위치 조정 */
+        right: 50px; /* 오른쪽으로 조금씩 이동 */
+        padding-right: 0; /* 추가적인 패딩 제거 */
+    }
+
+    .profile-title h1 {
+        display: none; /* 1024px 이하에서는 h1 숨김 */
+    }
+
+    /* 섹션 내부 간격 조정 */
+    .profile {
+        padding: 30px 5%; /* 양쪽 여백을 화면 크기에 비례하도록 조정 */
+        margin-top: 50px; /* 상단 여백 축소 */
+    }
+
+    .profile-content {
+        gap: 50px; /* 요소 간의 간격을 줄임 */
+        padding: 10px 0; /* 위아래 패딩 축소 */
+    }
+
+    .profile-image {
+        width: 220px; /* 이미지 크기를 적절히 줄임 */
+        height: auto; /* 비율 유지 */
+    }
+
+    .profile-details {
+        padding-left: 0; /* 추가 여백 제거 */
+        font-size: 1rem; /* 텍스트 크기 살짝 축소 */
+    }
+
+    .profile-details p {
+        margin: 5px 0; /* 텍스트 간의 간격 축소 */
+    }
+
+    h2 {
+        font-size: 1.8rem; /* 헤딩 크기를 조정 */
+        position: static; /* 위치를 고정하지 않음 */
+        text-align: left; /* 기존 정렬 유지 */
+    }
+}
+
+/* 600px 이하 화면 크기 대응 */
+@media screen and (max-width: 600px) {
+    
+    .header-container {
+        width: auto;
+        height: 300px; /* 고정된 세로 크기 */
+        padding: 0 10px; /* 양옆 여백 조정 */
+        margin: 0 auto; /* 중앙 정렬 */
+    }
+
+    .main-image {
+        width: auto; /* 비율 유지 */
+        max-width: 350px; /* 최대 크기 제한 */
+        height: 100%; /* 높이 유지 */
+        margin: 0 auto; /* 중앙 정렬 */
+        padding-left: 0; /* 패딩 제거 */
+    }
+
+    .profile-title {
+        bottom: 150px; /* 위치 조정 */
+        right: 20px; /* 우측 여백 축소 */
+        padding-right: 0; /* 추가 패딩 제거 */
+    }
+
+    .profile {
+        padding: 20px 5%; /* 상하단 간격 축소 */
+        margin-top: 100px; /* 상단 여백 조정 */
+    }
+
+    .profile-content {
+        flex-direction: column; /* 요소를 수직으로 정렬 */
+        align-items: center; /* 가운데 정렬 */
+        text-align: center; /* 텍스트 중앙 정렬 */
+        gap: 20px; /* 요소 간 간격 */
+    }
+
+    .profile-image {
+        margin: 0 auto; /* 이미지를 중앙에 배치 */
+        width: 180px; /* 이미지 크기 축소 */
+        height: auto; /* 비율 유지 */
+    }
+
+    .profile-details {
+        padding: 0; /* 여백 제거 */
+        font-size: 0.9rem; /* 텍스트 크기 축소 */
+    }
+
+    .profile-details p {
+        margin: 5px 0; /* 텍스트 간의 간격 축소 */
+    }
+
+    h2 {
+        font-size: 1.8rem; /* 헤딩 크기 조정 */
+        position: static; /* 위치 고정 해제 */
+        text-align: center; /* 중앙 정렬 */
+        margin-bottom: 30px;
+    }
+}
+
+
