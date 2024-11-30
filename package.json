@@ -1,15 +1,14 @@
 {
-  "name": "EDSK",
+  "name": "esdk",
   "version": "1.0.0",
-  "main": "app.js",      
   "scripts": {
-    "start": "node app.js"  
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.21.1"
   }
 }

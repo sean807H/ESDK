@@ -3,48 +3,42 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3001; // 포트를 3001로 변경
+  
+// 1. 정적 파일 제공 설정 (public과 images 폴더)
+app.use(express.static(path.join(__dirname, 'public', 'ESDK')));
+// CSS, JS, Fonts 경로
+app.use('/css', express.static(path.join(__dirname, 'public', 'ESDK', 'public', 'css')));
+app.use('/js', express.static(path.join(__dirname, 'public', 'ESDK', 'public', 'js')));
+app.use('/fonts', express.static(path.join(__dirname, 'public', 'ESDK', 'public', 'fonts')));
 
-// 정적 파일 경로 설정
-app.use(express.static(path.join(__dirname, 'public')));
+// Images 경로
+app.use('/images', express.static(path.join(__dirname, 'public', 'ESDK', 'images')));
 
-// 기본 라우트 설정
+
+// 2. HTML 파일 라우팅 설정
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'ESDK', 'views', 'index.html'));
 });
 
-// 서버리스 함수로 export
-module.exports = (req, res) => {
-  app(req, res);  // Express 서버 실행
-};
-
-// 1. 정적 파일 제공 설정 (public과 images 폴더)
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/images', express.static(path.join(__dirname, 'images')));
-
-// 2. HTML 파일 라우팅 설정
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'index.html'));
-});
-
 app.get('/gallery', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'gallery.html'));
+    res.sendFile(path.join(__dirname, 'public', 'ESDK', 'views', 'gallery.html'));
 });
 
 app.get('/album', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'album.html'));
+    res.sendFile(path.join(__dirname, 'public', 'ESDK', 'views', 'album.html'));
 });
 
 app.get('/profile', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'profile.html'));
+    res.sendFile(path.join(__dirname, 'public', 'ESDK', 'views', 'profile.html'));
 });
 
 app.get('/example', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'example.html'));
+    res.sendFile(path.join(__dirname, 'public', 'ESDK', 'views', 'example.html'));
 });
 
 app.get('/point', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'point.html'));
+    res.sendFile(path.join(__dirname, 'public', 'ESDK', 'views', 'point.html'));
 });
 
 // 이미지 API 설정 (카테고리별 이미지 제공)
@@ -56,11 +50,11 @@ app.get('/api/gallery', (req, res) => {
     // 각 카테고리에 맞는 경로 설정
     let categoryPath;
     if (category === 'album') {
-        categoryPath = path.join(__dirname, 'images', 'album');
+        categoryPath = path.join(__dirname, 'public', 'ESDK', 'images', 'album');
     } else if (category === 'photo') {
-        categoryPath = path.join(__dirname, 'images', 'legendmkdir'); // 화보를 legendmkdir에 연결
+        categoryPath = path.join(__dirname, 'public', 'ESDK', 'images', 'legendmkdir'); // 화보를 legendmkdir에 연결
     } else if (category === 'legend') {
-        categoryPath = path.join(__dirname, 'images', 'legend');
+        categoryPath = path.join(__dirname, 'public', 'ESDK', 'images', 'legend');
     } else {
         return res.status(400).json({ error: '잘못된 카테고리입니다.' });
     }
