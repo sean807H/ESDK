@@ -4,10 +4,14 @@ let initialVideoLoaded = false;
 const initialVideoId = '4cIniILXP7I';
 const initialVideoTitle = "[COVER] 도겸 - HAPPY (원곡 : DAY6)";
 
-// 유튜브 IFrame API가 준비되면 초기화
+// YouTube IFrame API가 준비되었을 때 호출되는 함수
 function onYouTubeIframeAPIReady() {
     console.log("YouTube IFrame API가 준비되었습니다.");
-    initializePlayer();
+    if (window.YT && YT.Player) {
+        initializePlayer();
+    } else {
+        console.error("YT.Player가 정의되지 않았습니다. API 로딩 상태를 확인해주세요.");
+    }
 }
 
 // 유튜브 플레이어 초기화 함수
@@ -24,6 +28,7 @@ function initializePlayer() {
             videoId: sessionStorage.getItem('currentVideoId') || initialVideoId,
             events: {
                 'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange,
             }
         });
     }
@@ -34,6 +39,15 @@ function onPlayerReady() {
     console.log("플레이어가 준비되었습니다.");
     isPlayerReady = true;
     loadInitialVideo();
+}
+
+// 플레이어 상태가 변경될 때 호출되는 함수
+function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.PLAYING) {
+        console.log("비디오가 재생 중입니다.");
+    } else if (event.data === YT.PlayerState.PAUSED) {
+        console.log("비디오가 일시 정지되었습니다.");
+    }
 }
 
 // 초기 동영상을 로드하는 함수
@@ -47,23 +61,16 @@ function loadInitialVideo() {
     }
 }
 
-// 썸네일을 클릭하면 큰 화면의 동영상이 변경되지만, 자동 재생되지 않음
+// 동영상을 로드하는 함수
 function loadVideo(videoId, title) {
+    console.log("Loading video:", videoId, title);
     if (isPlayerReady) {
         player.cueVideoById(videoId);
         document.querySelector('.main-video-title').textContent = title;
         sessionStorage.setItem('currentVideoId', videoId);
         sessionStorage.setItem('currentVideoTitle', title);
-    }
-}
-
-// API 준비 여부 확인 및 초기화 대기
-function checkYouTubeAPI() {
-    if (window.YT && YT.Player) {
-        initializePlayer();
     } else {
-        console.log("YouTube API 준비 안 됨, 0.5초 후 재시도");
-        setTimeout(checkYouTubeAPI, 500); // 0.5초마다 API 준비 여부 확인
+        console.log("플레이어가 준비되지 않았습니다.");
     }
 }
 
@@ -71,18 +78,19 @@ function checkYouTubeAPI() {
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOMContentLoaded 이벤트가 발생했습니다.");
     
+    // YouTube API가 로드되지 않았다면 스크립트를 동적으로 추가
     if (!window.YT) {
         const tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         const firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
         console.log("YouTube API 스크립트가 로드되었습니다.");
-        checkYouTubeAPI();
     } else {
         console.log("YouTube API 이미 로드됨");
         initializePlayer();
     }
 
+    // 썸네일 갤러리 클릭 이벤트 설정
     document.querySelector('#thumbnail-gallery').addEventListener('click', function (event) {
         const element = event.target.closest('.thumbnail');
         if (element) {
@@ -91,6 +99,16 @@ document.addEventListener('DOMContentLoaded', function () {
             loadVideo(videoId, title);
         }
     });
+
+    // 썸네일 갤러리 터치 이벤트 설정 (모바일용)
+    document.querySelector('#thumbnail-gallery').addEventListener('touchstart', function (event) {
+        const element = event.target.closest('.thumbnail');
+        if (element) {
+            const videoId = element.getAttribute('data-video-id');
+            const title = element.getAttribute('data-title');
+            loadVideo(videoId, title);
+        }
+    }, { passive: true });
 });
 
 // 페이지 네이션 기능
