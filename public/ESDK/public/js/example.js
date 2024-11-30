@@ -12,6 +12,11 @@ function onYouTubeIframeAPIReady() {
 
 // 유튜브 플레이어 초기화 함수
 function initializePlayer() {
+    if (!window.YT || !window.YT.Player) {
+        console.error("YT.Player is not available. Check if the YouTube IFrame API is loaded.");
+        return;
+    }
+
     if (!player) {
         player = new YT.Player('main-video-player', {
             height: '400',
@@ -57,6 +62,7 @@ function checkYouTubeAPI() {
     if (window.YT && YT.Player) {
         initializePlayer();
     } else {
+        console.log("YouTube API 준비 안 됨, 0.5초 후 재시도");
         setTimeout(checkYouTubeAPI, 500); // 0.5초마다 API 준비 여부 확인
     }
 }
@@ -65,24 +71,25 @@ function checkYouTubeAPI() {
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOMContentLoaded 이벤트가 발생했습니다.");
     
-    // API 스크립트가 로드되지 않은 경우 스크립트 동적 추가
     if (!window.YT) {
         const tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         const firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        console.log("YouTube API 스크립트가 로드되었습니다.");
         checkYouTubeAPI();
     } else {
+        console.log("YouTube API 이미 로드됨");
         initializePlayer();
     }
 
-    // 썸네일 클릭 이벤트 설정
-    document.querySelectorAll('.thumbnail').forEach(function (element) {
-        element.addEventListener('click', function () {
+    document.querySelector('#thumbnail-gallery').addEventListener('click', function (event) {
+        const element = event.target.closest('.thumbnail');
+        if (element) {
             const videoId = element.getAttribute('data-video-id');
             const title = element.getAttribute('data-title');
             loadVideo(videoId, title);
-        });
+        }
     });
 });
 

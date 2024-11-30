@@ -142,25 +142,18 @@ i:hover{
         display: none;
         position: fixed;
         top: 0;
-        right: 0;
-        height: 1000px;
-        /* 메뉴 높이 */
-        width: 50%;
-        /* 화면의 절반을 차지 */
-        background-color: rgba(255, 255, 255, 0.639);
-        /* 반투명 흰색 배경 */
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-        /* 그림자 효과 */
+        right: 0px; /* 오른쪽 마진 50px */
+        height: 100%;
+        width: 50%; /* 화면의 절반에서 오른쪽 마진만큼 뺌 */
+        background-color: rgba(255, 255, 255, 0.639); /* 반투명 흰색 배경 */
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
-        padding-top: 60px;
-        /* 아이템과 상단 여백 */
+        padding-top: 60px; /* 아이템과 상단 여백 */
         padding-left: 20px;
-        transition: transform 0.3s ease-in-out;
-        /* 부드러운 슬라이드 애니메이션 */
-        transform: translateX(100%);
-        /* 기본적으로 화면 밖으로 숨김 */
+        transition: transform 0.3s ease-in-out; /* 부드러운 슬라이드 애니메이션 */
+        transform: translateX(100%); /* 기본적으로 화면 밖으로 숨김 */
         z-index: 1000;
     }
 
@@ -176,8 +169,12 @@ i:hover{
 
     /* 첫 번째 항목에만 위쪽 마진을 주어 리스트 아이콘과 간격을 둡니다 */
     nav .menu a:first-child {
-        margin-top: 70px;
-        /* 첫 번째 항목만 30px 만큼 떨어지게 */
+        margin-top: 70px; /* 첫 번째 항목만 30px 만큼 떨어지게 */
+    }
+
+    /* 메뉴 항목에 오른쪽 마진 추가 */
+    nav .menu a {
+        padding-right: 50px; /* 텍스트가 오른쪽 50px 이하로 고정 */
     }
 
     nav .menu a:hover {
